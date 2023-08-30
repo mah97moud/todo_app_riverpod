@@ -33,7 +33,7 @@ class RoundButton extends StatelessWidget {
         style: GoogleFonts.poppins(
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
-          color: ColorsRes.backgroundDark,
+          color: ColorsRes.darkBackground,
         ),
       ),
     );

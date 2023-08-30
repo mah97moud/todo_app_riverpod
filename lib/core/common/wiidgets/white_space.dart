@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class WhiteSpace extends StatelessWidget {
   const WhiteSpace({
     Key? key,
-    required this.height,
+    this.height,
     this.width,
   }) : super(key: key);
 

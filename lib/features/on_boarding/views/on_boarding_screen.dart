@@ -27,7 +27,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorsRes.backgroundDark,
         body: Stack(
           alignment: Alignment.bottomCenter,
           children: [
@@ -53,11 +52,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         curve: Curves.bounceInOut,
                       );
                     },
-                    label:  const FadingText(
-                    'Skip',
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w500,
-                  ),
+                    label: const FadingText(
+                      'Skip',
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
+                    ),
                     icon: const Icon(
                       size: 30.0,
                       color: ColorsRes.light,
@@ -85,6 +84,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 }
-/** 
- *     
+/**
+ *
 */

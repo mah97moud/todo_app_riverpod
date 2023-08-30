@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_riverpod/features/authentication/views/sign_in_screen.dart';
 
 import '../../../../core/common/wiidgets/round_button.dart';
 import '../../../../core/common/wiidgets/white_space.dart';
@@ -21,7 +22,13 @@ class SecondPage extends StatelessWidget {
             height: 50.0,
           ),
           RoundButton(
-            onPressed: (){},
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => const SignInScreen(),
+                ),
+              );
+            },
             title: 'Login with phone',
           ),
         ],

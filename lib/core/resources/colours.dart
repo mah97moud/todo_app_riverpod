@@ -5,7 +5,7 @@ class ColorsRes {
   static final ColorsRes _instance = ColorsRes._shared();
   factory ColorsRes() => _instance;
 
-  static const Color backgroundDark = Color(0xFF2a2b2e);
+  static const Color darkBackground = Color(0xFF2a2b2e);
   static const Color light = Color(0xFFFFFFFF);
   static const Color red = Color(0xFFd80000);
   static const Color lightBlue = Color(0xFF027eb5);
