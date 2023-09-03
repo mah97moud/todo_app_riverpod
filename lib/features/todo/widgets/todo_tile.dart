@@ -15,7 +15,7 @@ class TodoTile extends StatelessWidget {
     this.onEdit,
     this.onDelete,
     required this.endIcon,
-    this.bottomMargin,
+    this.bottomMargin, this.color,
   }) : super(key: key);
 
   final TaskModel task;
@@ -23,12 +23,13 @@ class TodoTile extends StatelessWidget {
   final VoidCallback? onDelete;
   final Widget endIcon;
   final double? bottomMargin;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
-    final color = ColorsRes.randomColor();
+    final colour = color ?? ColorsRes.randomColor();
     return Container(
       padding: const EdgeInsets.all(8.0),
       margin: bottomMargin == null
@@ -48,7 +49,7 @@ class TodoTile extends StatelessWidget {
                 width: 5.0.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.0),
-                  color: color,
+                  color: colour,
                 ),
               ),
               const WhiteSpace(width: 15.0),

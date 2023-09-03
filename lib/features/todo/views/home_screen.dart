@@ -13,6 +13,8 @@ import '../../authentication/views/sign_in_screen.dart';
 import '../app/task_provider.dart';
 import '../widgets/active_tasks.dart';
 import '../widgets/completed_tasks.dart';
+import '../widgets/tasks_for_today_after_tomorrow.dart';
+import '../widgets/tasks_for_tomorrow.dart';
 import 'add_task_screen.dart';
 
 class HomeScreen extends HookConsumerWidget {
@@ -32,7 +34,6 @@ class HomeScreen extends HookConsumerWidget {
 
     ref.read(taskProvider.notifier).refresh();
 
-    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -112,94 +113,102 @@ class HomeScreen extends HookConsumerWidget {
         ),
       ),
       body: SafeArea(
-        child: ListView(
-          shrinkWrap: true,
-          padding: EdgeInsets.symmetric(
-            horizontal: 20.0.w,
-            vertical: 25.0.h,
-          ),
-          children: [
-            Row(
-              children: [
-                const Icon(
-                  FontAwesome.tasks,
-                  size: 20.0,
-                  color: ColorsRes.light,
-                ),
-                const WhiteSpace(width: 10.0),
-                Text(
-                  'Today\'s Tasks',
-                  style: GoogleFonts.poppins(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 25.0),
+          child: ListView(
+            shrinkWrap: true,
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0.w,
+              vertical: 25.0.h,
+            ),
+            children: [
+              
+              Row(
+                children: [
+                  const Icon(
+                    FontAwesome.tasks,
+                    size: 20.0,
                     color: ColorsRes.light,
                   ),
-                ),
-              ],
-            ),
-            const WhiteSpace(height: 25.0),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12.0),
-              child: ColoredBox(
-                color: ColorsRes.light,
-                child: TabBar(
-                  controller: tabController,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  indicator: BoxDecoration(
-                    color: ColorsRes.lightGrey,
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  labelPadding: EdgeInsets.zero,
-                  isScrollable: false,
-                  labelColor: ColorsRes.lightBlue,
-                  labelStyle: GoogleFonts.poppins(
-                    fontSize: 24.0,
-                    color: ColorsRes.lightBlue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  unselectedLabelColor: ColorsRes.light,
-                  tabs: [
-                    Tab(
-                      child: SizedBox(
-                        width: screenWidth * 0.5,
-                        child: Center(
-                          child: Text(
-                            'Pending',
-                            style: tabTextStyle,
-                          ),
-                        ),
-                      ),
+                  const WhiteSpace(width: 10.0),
+                  Text(
+                    'Today\'s Tasks',
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      color: ColorsRes.light,
                     ),
-                    Tab(
-                      child: SizedBox(
-                        width: screenWidth * 0.5,
-                        child: Center(
-                          child: Text(
-                            'Completed',
-                            style: tabTextStyle,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ),
-            const WhiteSpace(height: 20.0),
-            SizedBox(
-              height: screenHeight * 0.26,
-              child: ClipRRect(
+              const WhiteSpace(height: 25.0),
+              ClipRRect(
                 borderRadius: BorderRadius.circular(12.0),
-                child: TabBarView(
-                  controller: tabController,
-                  children:  [
-                    const ActiveTasks(),
-                    const CompletedTasks()
-                  ],
+                child: ColoredBox(
+                  color: ColorsRes.light,
+                  child: TabBar(
+                    controller: tabController,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicator: BoxDecoration(
+                      color: ColorsRes.lightGrey,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    labelPadding: EdgeInsets.zero,
+                    isScrollable: false,
+                    labelColor: ColorsRes.lightBlue,
+                    labelStyle: GoogleFonts.poppins(
+                      fontSize: 24.0,
+                      color: ColorsRes.lightBlue,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    unselectedLabelColor: ColorsRes.light,
+                    tabs: [
+                      Tab(
+                        child: SizedBox(
+                          width: screenWidth * 0.5,
+                          child: Center(
+                            child: Text(
+                              'Pending',
+                              style: tabTextStyle,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Tab(
+                        child: SizedBox(
+                          width: screenWidth * 0.5,
+                          child: Center(
+                            child: Text(
+                              'Completed',
+                              style: tabTextStyle,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            )
-          ],
+              const WhiteSpace(height: 20.0),
+              SizedBox(
+                height: screenHeight * 0.26,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12.0),
+                  child: TabBarView(
+                    controller: tabController,
+                    children: const [
+                      ActiveTasks(),
+                      CompletedTasks(),
+                    ],
+                  ),
+                ),
+              ),
+              const WhiteSpace(height: 20.0),
+              const TasksForTomorrow(),
+              const WhiteSpace(height: 20.0),
+              const TasksForTodayAfterTomorrow(),
+            ],
+          ),
         ),
       ),
     );

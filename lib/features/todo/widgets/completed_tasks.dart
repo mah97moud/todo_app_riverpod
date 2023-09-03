@@ -16,7 +16,6 @@ class CompletedTasks extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tasks = ref.watch(taskProvider);
-    print('My Tasks ${tasks.length}');
 
     return FutureBuilder(
       future: TodoUtils.getCompletedTasksToDay(tasks),

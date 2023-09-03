@@ -35,7 +35,7 @@ class TodoUtils {
   static Future<List<TaskModel>> getDayAfterTomorrowTasks(
       List<TaskModel> allTasks,) async {
     final dayAfterTomorrow = DateTime.now().add(
-      const Duration(days: 1),
+      const Duration(days: 2),
     );
     if (allTasks.isEmpty) return allTasks;
     return allTasks
